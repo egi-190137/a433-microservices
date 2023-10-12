@@ -1,0 +1,38 @@
+# Versi syntax
+version: "3.7"
+# Menentukan service yang berjalan
+services:
+  # service untuk mongo db
+  item-db:
+    # base image
+    image: mongo:3 
+    # mengatur restart policy
+    restart: unless-stopped 
+    # mengatur port
+    ports:
+      - 27017:27017
+    # bind-mount
+    volumes:
+      - app-db:/data/db
+  
+  item-app:
+    # build menggunakan dockerfile
+    build: .
+    # depends_on agar item-app baru dijalankan ketika item-db sudah berjalan
+    depends_on:
+      - item-db
+    # mengatur restart policy
+    restart: unless-stopped 
+    # mengatur port
+    ports:
+      - 80:8080
+    # Mengatur working directory
+    working_dir: /app
+    # bind-mount
+    volumes:
+      - ./:/app
+
+# untuk menentukan volume agar data tidak hilang ketika restart
+volumes:
+  # membuat volume dengan nama "app-db"
+  app-db:
