@@ -16,8 +16,8 @@ services:
       - app-db:/data/db
   
   item-app:
-    # build menggunakan dockerfile
-    build: .
+    # image dari github container registry
+    image: ghcr.io/egi-190137/item-app:v1
     # depends_on agar item-app baru dijalankan ketika item-db sudah berjalan
     depends_on:
       - item-db

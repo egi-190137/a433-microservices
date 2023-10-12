@@ -1,7 +1,5 @@
 # Menggunakan base image node versi 14
 FROM node:14
-# Memberikan label agar dapat tersambung dengan repository
-LABEL org.opencontainers.image.source https://github.com/egi-190137/a433-microservices
 # Mengatur working directory
 WORKDIR /app
 # Menyalin semua file ke dalam working directory

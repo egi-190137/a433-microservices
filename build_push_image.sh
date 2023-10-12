@@ -1,5 +1,5 @@
 # build image dengan nama item-app
-docker build . -t item-app:v1
+docker build --tag=item-app:v1 .
 # Menampilkan daftar image
 docker images
 # memberikan tag pada image agar dapat di-push
