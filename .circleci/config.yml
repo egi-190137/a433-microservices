@@ -33,7 +33,7 @@ jobs:
           command: docker build -t ghcr.io/egi-190137/karsajobs:latest .
       - run:
           name: login pada github container registry dengan token yang tersimpan pada environment variable
-          command: echo "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" | docker login ghcr.io -u egi-190137 --password-stdin
+          command: echo "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" | docker login ghcr.io -u egi-190137 --password-stdin
       - run:
           name: Push image ke github container registry
           command: docker push ghcr.io/egi-190137/karsajobs:latest
