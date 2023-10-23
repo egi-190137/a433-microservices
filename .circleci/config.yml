@@ -23,11 +23,9 @@ jobs:
       - run:
           name: build image dengan nama ghcr.io/<username>/karsajobs:latest 
           command: docker build -t ghcr.io/egi-190137/karsajobs:latest .
-    steps:
       - run:
           name: login pada github container registry dengan token yang tersimpan pada environment variable
           command: echo $GH_TOKEN | sudo docker login ghcr.io -u egi-190137 --password-stdin
-    steps:
       - run:
           name: Push image ke github container registry
           command: sudo docker push ghcr.io/egi-190137/karsajobs:latest
