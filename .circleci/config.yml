@@ -18,6 +18,7 @@ jobs:
     docker:
       - image: circleci/golang:1.15.8
     steps:
+      - checkout
       - run:
           name: running unit test for backend
           command: go test -v -short --count=1 $(go list ./...)
