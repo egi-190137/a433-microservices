@@ -27,6 +27,7 @@ jobs:
       - image: docker:stable
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: build image dengan nama ghcr.io/<username>/karsajobs:latest 
           command: docker build -t ghcr.io/egi-190137/karsajobs:latest .
