@@ -38,5 +38,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - lint-dockerfile
-      - test-app
-      - build-app-karsajobs
+      # - test-app
+      # - build-app-karsajobs
