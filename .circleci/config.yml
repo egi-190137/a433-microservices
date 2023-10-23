@@ -14,13 +14,15 @@ jobs:
       - run:
           name: lint Dockerfile using hadolint docker image image
           command: docker run --rm -i hadolint/hadolint < Dockerfile
-  # test-app:
-  #   docker:
-  #     - image: circleci/golang:1.15.8
-  #   steps:
-  #     - run:
-  #         name: running unit test for backend
-  #         command: go test -v -short --count=1 $(go list ./...)
+  test-app:
+    docker:
+      - image: circleci/golang:1.15.8
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: running unit test for backend
+          command: go test -v -short --count=1 $(go list ./...)
   # build-app-karsajobs:
   #   steps:
   #     - run:
@@ -38,5 +40,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - lint-dockerfile
-      # - test-app
+      - test-app
       # - build-app-karsajobs
