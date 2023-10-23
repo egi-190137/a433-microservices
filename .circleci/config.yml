@@ -26,7 +26,7 @@ jobs:
     docker:
       - image: docker:stable
     steps:
-      -checkout
+      - checkout
       - run:
           name: build image dengan nama ghcr.io/<username>/karsajobs:latest 
           command: docker build -t ghcr.io/egi-190137/karsajobs:latest .
