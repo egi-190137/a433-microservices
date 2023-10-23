@@ -24,7 +24,7 @@ jobs:
           command: go test -v -short --count=1 $(go list ./...)
   build-app-karsajobs:
     docker:
-      - image: docker:stable
+      - image: circleci/buildpack-deps:stretch
     steps:
       - checkout
       - setup_remote_docker
@@ -33,10 +33,10 @@ jobs:
           command: docker build -t ghcr.io/egi-190137/karsajobs:latest .
       - run:
           name: login pada github container registry dengan token yang tersimpan pada environment variable
-          command: echo $GH_TOKEN | sudo docker login ghcr.io -u egi-190137 --password-stdin
+          command: echo "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" | docker login ghcr.io -u egi-190137 --password-stdin
       - run:
           name: Push image ke github container registry
-          command: sudo docker push ghcr.io/egi-190137/karsajobs:latest
+          command: docker push ghcr.io/egi-190137/karsajobs:latest
 
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
