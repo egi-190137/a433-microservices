@@ -1,13 +1,14 @@
-FROM node:14
+FROM node:14-alpine
+WORKDIR /src
+COPY package*.json .
 
-WORKDIR /app
+RUN apk add --no-cache bash
+RUN wget -O /bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
 
-COPY package.json .
-
-RUN npm install
-
+RUN chmod +x /bin/wait-for-it.sh
+# Mengatur environment variable
+ENV NODE_ENV=production
+RUN npm ci
 COPY . .
-
 EXPOSE 3000
-
 CMD ["npm", "run", "start"]
